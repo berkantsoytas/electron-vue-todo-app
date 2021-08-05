@@ -47,7 +47,7 @@ app.on("ready", () => {
       // todoList.push();
 
       mainWindow.webContents.send("todo:addItem", {
-        id: todoList.length + 1,
+        id: new Date().getTime(),
         text: todo,
       });
 
