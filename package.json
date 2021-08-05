@@ -1,0 +1,14 @@
+{
+  "name": "electron-todo",
+  "version": "1.0.0",
+  "description": "Electron & Vue 3 TODO APP",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Berkant Soytaş <berkantsoytasofficial@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.1.8"
+  }
+}
