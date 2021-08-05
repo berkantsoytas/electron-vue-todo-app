@@ -2,7 +2,7 @@ const electron = require("electron");
 const url = require("url");
 const path = require("path");
 
-const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = electron;
+const { app, BrowserWindow, Menu, ipcMain } = electron;
 
 let mainWindow, addWindow;
 
@@ -12,6 +12,7 @@ app.on("ready", () => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
   mainWindow.setResizable(false);
@@ -39,6 +40,20 @@ app.on("ready", () => {
   ipcMain.on("newTodo:close", (err, data) => {
     addWindow.close();
     addWindow = null;
+  });
+
+  ipcMain.on("newTodo:save", (err, todo) => {
+    if (todo) {
+      // todoList.push();
+
+      mainWindow.webContents.send("todo:addItem", {
+        id: todoList.length + 1,
+        text: todo,
+      });
+
+      addWindow.close();
+      addWindow = null;
+    }
   });
 });
 
@@ -118,4 +133,8 @@ function createWindow() {
   addWindow.on("close", () => {
     addWindow = null;
   });
+}
+
+function getTodoList() {
+  console.log(todoList);
 }
