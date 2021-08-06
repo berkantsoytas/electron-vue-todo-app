@@ -11,14 +11,15 @@
   </head>
   <body>
     <div id="app">
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="col-md-12 d-flex">
+          <a href="#" class="navbar-brand text-white">TODO</a>
+          <input @keydown.enter="addTodo($event)" type="text" class="form-control mr-1" />
+          <button @click="exit" class="btn btn-sm bg-danger text-white">Çıkış</button>
+        </div>
+      </nav>
       <div class="container main-container pt-5">
         <h3 class="text-center">ElectronJS & VueJS 3 ile ToDo APP</h3>
-        <div class="row">
-          <div class="col-md-6 offset-3 mt-5 d-flex">
-            <input @keydown.enter="addTodo($event)" type="text" class="form-control form-control-lg mr-1" />
-            <button @click="addTodo" class="btn btn-outline-dark">Ekle</button>
-          </div>
-        </div>
         <h3 class="text-center mt-5 mb-3">Yapılacaklar Listesi</h3>
         <div v-if="todoListMain.length > 0" class="row">
           <div v-for="todo in todoListMain" class="bg-purple p-2 mb-3 text-light bg-dark col-md-8 offset-2 shadow card d-flex justify-content-center flex-row align-items-center">

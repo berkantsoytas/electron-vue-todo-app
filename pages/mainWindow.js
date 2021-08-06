@@ -5,6 +5,7 @@ const app = Vue.createApp({
   setup() {
     const todoListMain = Vue.ref([]);
     const mainTodo = Vue.ref();
+    const MyInput = Vue.ref();
 
     function removeTodo(todo) {
       if (confirm("Bu kaydı silmek istediğinizden emin misiniz?")) {
@@ -17,6 +18,11 @@ const app = Vue.createApp({
         id: new Date().getTime(),
         text: e.target.value,
       });
+      e.target.value = "";
+    }
+
+    function exit() {
+      ipcRenderer.send("todo:quit");
     }
 
     ipcRenderer.on("todo:addItem", (err, todoItem) => {
@@ -27,6 +33,7 @@ const app = Vue.createApp({
       todoListMain,
       removeTodo,
       addTodo,
+      exit,
     };
   },
 });

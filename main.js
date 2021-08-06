@@ -14,6 +14,7 @@ app.on("ready", () => {
       contextIsolation: false,
       enableRemoteModule: true,
     },
+    // frame: false,
   });
   mainWindow.setResizable(false);
   mainWindow.loadURL(
@@ -54,6 +55,10 @@ app.on("ready", () => {
       addWindow.close();
       addWindow = null;
     }
+  });
+
+  ipcMain.on("todo:quit", () => {
+    app.quit();
   });
 });
 
