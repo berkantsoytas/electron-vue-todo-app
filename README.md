@@ -1,8 +1,8 @@
-# electron-vue-todo-app
+# TODO APP
 
 Electron JS &amp; Vue js TODO App
 
-<br /><br /><br />
+<br />
 
 ## Kurulum | Installation
 
